@@ -1,0 +1,41 @@
+<html>
+<head>
+
+<script>
+      function largestOfFour(arr) {
+  
+  var finalArray = [];
+  var finalNumber = 0;
+  
+  finalArray = arr.map(function(val){
+    
+    var tempArray = [];
+    var tempNumber = 0;
+    tempArray = val;
+    document.write(tempArray + "<br>");
+    
+    for(var i = 0; i < tempArray.length; i++){
+      
+    
+      if (tempArray[i] >= tempNumber) {
+        tempNumber = tempArray[i];
+       
+      }
+          }
+    
+    return tempNumber;
+    
+  });
+  document.write(finalArray + "<br>");
+  return finalArray;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

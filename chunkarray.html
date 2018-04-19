@@ -1,0 +1,42 @@
+<html>
+<head>
+
+<script>
+     function truncateString(str, num) {
+  // Clear out that junk in your trunk
+ 
+ var strLength = str.length;
+ var newStr_smallNmb = str.slice(0,num);
+ var newStr_bigNmb = str.slice(0,num-3);
+ document.write(newStr_bigNmb);
+
+ if (strLength > num){
+  
+         if (num <= 3) {
+        
+        document.write(newStr_smallNmb+"...<BR>");
+        return newStr_smallNmb;
+        } 
+
+        else {
+        
+          document.write(newStr_bigNmb+"...<br>");
+          return newStr_bigNmb;
+        }
+
+
+
+ }
+  return str;
+}
+
+truncateString("absout",3);
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

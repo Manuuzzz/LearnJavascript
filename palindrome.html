@@ -1,0 +1,41 @@
+<html>
+
+<head>
+
+<script>
+function palindrome(str) {
+  // Good luck!
+ 
+   var lefttoright = [];
+  var righttoleft = [];
+  
+
+
+  var newStr = str.toLowerCase();
+  
+  var re = newStr.replace(/[^a-z0-9]/gi,'');
+ 
+  lefttoright = re.split('');
+ var newlefttoright = lefttoright.join("");
+   righttoleft  = lefttoright.reverse();
+   var newrighttoleft = righttoleft.join("");
+   document.write(newrighttoleft + " " + newlefttoright);
+
+   if (newlefttoright== newrighttoleft) {
+   
+    return true; } else {
+       
+        return false;}
+
+}
+
+
+
+palindrome("1 eye for of 1 eye.");
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

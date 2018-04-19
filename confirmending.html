@@ -1,0 +1,27 @@
+<html>
+<head>
+
+<script>
+    function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+ 
+ var countTarget = target.length;
+ var countStr = str.length;
+var count = countStr-countTarget;
+var tempStr = str.substring(count,countStr);
+
+if (tempStr == target) {
+  return true;}  else return false;
+
+}
+
+confirmEnding("i am Bastian", "Bastian");
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+
+<script>
+    
+function titleCase(str) {
+  
+  var myStr = [];
+  var myStrLowerCase = [];
+ 
+  
+  myStr = str.split(" ");
+  
+  document.write(myStr + "<br>");
+
+  myStrLowerCase = myStr.map(function(val){
+    var tempStr = val.toLowerCase();
+    newStr = tempStr.charAt(0).toUpperCase()+tempStr.slice(1);
+   return newStr;
+
+  });
+  
+   
+var final = myStrLowerCase.join(" ");
+document.write(final);
+return final;
+
+}
+
+titleCase("I'm a little tea pot");
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
