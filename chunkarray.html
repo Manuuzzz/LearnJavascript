@@ -2,36 +2,47 @@
 <head>
 
 <script>
-     function truncateString(str, num) {
-  // Clear out that junk in your trunk
- 
- var strLength = str.length;
- var newStr_smallNmb = str.slice(0,num);
- var newStr_bigNmb = str.slice(0,num-3);
- document.write(newStr_bigNmb);
+function chunkArrayInGroups(arr, size) {
+  // Break it up. push and slice
 
- if (strLength > num){
-  
-         if (num <= 3) {
-        
-        document.write(newStr_smallNmb+"...<BR>");
-        return newStr_smallNmb;
-        } 
+var arrLength = arr.length;
+var newArray = [];
+var finalArray = [];
+var j = 0;
+var x = 0;
+var counter = 0;
 
-        else {
-        
-          document.write(newStr_bigNmb+"...<br>");
-          return newStr_bigNmb;
-        }
+if (arrLength%size ==0) {
+  counter = arrLength/size;}
+  else {
 
+counter = Math.ceil((arrLength/size));
+document.write(counter);
+  }
 
+for (var i = 0; i<counter; i++){
+  j = j + size;
 
- }
-  return str;
+newArray = arr.slice(x,j);
+document.write("<br>"+"newArray " + newArray );
+finalArray.push(newArray);
+document.write("<br>"+"final" + finalArray+ "<br>");
+x = x + size;
 }
 
-truncateString("absout",3);
-truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+
+
+
+
+
+
+
+
+
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"],3);
 
 </script>
 </head>
