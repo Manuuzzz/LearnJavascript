@@ -1,0 +1,55 @@
+<html>
+<head>
+
+<script>
+
+function mutation(arr) {
+  
+  
+  var word = "";
+var searchStr = "";
+  var tempword = "";
+  var tempsearchStr = "";
+var letters = [];
+var value = true;
+
+tempword = arr[0];
+tempsearchStr = arr[1];
+word = tempword.toLowerCase();
+searchStr = tempsearchStr.toLowerCase();
+letters = searchStr.length;
+
+
+for (i = 0; i < letters; i++) {
+
+ var temp = searchStr[i];
+var number = word.indexOf(temp);
+  if (number < 0) {
+
+    value = false;
+  }
+  
+
+
+
+ 
+}
+
+  
+  
+  return value;
+  
+  
+  
+  
+}
+
+mutation(["hello", "hey"]);
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
