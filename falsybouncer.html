@@ -5,23 +5,27 @@
 
 function bouncer(arr) {
   // Don't show a false ID to this bouncer.
+  // false, null, 0, "", undefined, and NaN
+  function CheckBadValues(item) {
+
+var stuff = item;
+stuff != false,null,0,"",undefined,NaN;
+return stuff;
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  return arr;
 }
 
-bouncer([7, "ate", "", false, 9]);
+var result = arr.filter(CheckBadValues);
+  
+  
+
+  return result;
+  
+}
+
+
+bouncer([1, null, NaN, 2, undefined]);
+
 
 </script>
 </head>

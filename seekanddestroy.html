@@ -1,0 +1,54 @@
+<html>
+<head>
+
+<script>
+
+function destroyer(arr) {
+  // Remove all the values
+let argumentLength = arguments.length;
+let secondArray = [];
+  let firstArray = [];
+  firstArray = arguments[0];
+  var tempArray = [];
+  var tempVar = "";
+  var y = 0;
+
+  for (var i = 1; i < argumentLength; i++){
+secondArray.push(arguments[i]);
+ }
+var secondArrayLength = secondArray.length;
+tempArr = firstArray;
+ 
+function TestValues(item){
+
+return item != tempVar;
+
+
+}
+for (var y = 0; y < secondArrayLength; y++) {
+  tempVar = secondArray[y];
+tempArr = tempArr.filter(TestValues);}
+ 
+ /*do {
+
+
+tempArr = tempArr.filter(word => word != secondArray[y]); 
+y++;}
+while ( y < secondArrayLength);
+
+*/
+
+document.write("temparr is " + tempArr);
+  return tempArr;
+}
+
+destroyer(["tree", "hamburger", 53], "tree", 53);
+
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
