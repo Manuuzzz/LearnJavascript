@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<script>
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+
+var givenArray = arguments[0];
+var searchNumber = arguments[1];
+var position = 0;
+
+document.write("given array is " + givenArray + "<br>");
+document.write("searchNumber is " + searchNumber + "<br>");
+
+for (var i = 0; i < givenArray.length; i++) {
+
+if (searchNumber > givenArray[i]) {
+
+  position+=1;
+} 
+
+}
+
+document.write("position is " + position + "<br>");
+  return position;
+}
+
+getIndexToIns([40, 60], 50);
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
