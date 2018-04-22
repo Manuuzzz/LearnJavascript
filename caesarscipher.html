@@ -4,14 +4,46 @@
 <script>
 function rot13(str) { // LBH QVQ VG!
 
+  
+ var inputString = str;
+ var newString = inputString; //.replace(/[^a-z]/gi,' ');
+ var strLength = newString.length;
+ var tempArr = [];
+ var code = 0;
+
+ for (var i = 0; i < strLength; i++){
+
+code = newString.charCodeAt(i);
+//document.write(code + "<br>");
+// whitespace is 32
+if (code <65 || code > 90 ) {
+  var letter = String.fromCharCode(code);
+tempArr.push(letter);
+
+} else {
+
+  if (code >= 65 && code <= 77) {
+code = code + 13; } else {
+code = code - 13;}
+//document.write("code is " + code + "<br>");
+var letter = String.fromCharCode(code);
+//document.write("letter  is " + letter + "<br>");
+tempArr.push(letter);
+}
+
+ }
+ var newWord = tempArr.join("");
+document.write(newWord + "<br>");
+
 
 
   
   return str;
 }
 
+
 // Change the inputs below to test
-rot13("SERR PBQR PNZC");
+rot13("SERR PBQR PNZC!");
 
 </script>
 </head>
