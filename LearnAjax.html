@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<script>
+
+  function loadDoc(){
+   
+    var xhttp = new XMLHttpRequest();
+    
+    xhttp.onreadystatechange = function()  {
+      
+      if(xhttp.readyState == 4){
+					//the request is completed, now check its status
+					if(xhttp.status == 200){
+       
+           
+ 
+  var jsonObj = JSON.parse(xhttp.responseText);
+ document.getElementById("tester").innerHTML = jsonObj.contents.quotes[0].quote;
+
+					}
+					else{
+						console.log("Status error: " + xhttp.status);
+					}
+				}
+				else{
+					console.log("Ignored readyState: " + xhttp.readyState);
+				}
+			
+
+			}
+ 
+ xhttp.open("GET", "http://quotes.rest/qod.json?category=sports", true);
+ xhttp.send();
+
+
+
+  }
+
+
+ </script>
+</head>
+
+<body>
+    <button type="button" onclick="loadDoc()">Request data</button>
+<h1 id="tester">hallo</h1>
+<h1 id="tester2">hallo</h1>
+<span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
+</body>
+</html>
