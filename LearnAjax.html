@@ -14,8 +14,9 @@
 					if(xhttp.status == 200){
        
            
- 
+						//Math.floor((Math.random() * 100) + 1);
   var jsonObj = JSON.parse(xhttp.responseText);
+  
  document.getElementById("tester").innerHTML = jsonObj.contents.quotes[0].quote;
 
 					}
@@ -31,6 +32,7 @@
 			}
  
  xhttp.open("GET", "http://quotes.rest/qod.json?category=sports", true);
+ // xhttp.open("GET", "http://quotes.rest/quote/random.json", true); this one is private
  xhttp.send();
 
 
