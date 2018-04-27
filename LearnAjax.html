@@ -7,10 +7,53 @@
 		</style>
 		<script src="velocity/velocity.min.js"></script>
 		<script>
-		
- function loadDoc(){
-   
-    var xhttp = new XMLHttpRequest();
+		var xhttp_changeQuote ="";
+		var json_changequote ="";
+ function changeit(){
+
+	xhttp_changeQuote = new XMLHttpRequest();
+
+
+	xhttp_changeQuote.onreadystatechange = function() {
+	
+		 if(xhttp_changeQuote.readyState == 4){
+					//the request is completed, now check its status
+					if(xhttp_changeQuote.status == 200){
+       
+				
+				 json_changequote = JSON.parse(xhttp_changeQuote.responseText);
+				 var randomQuoteArray = [];
+				for (var key in json_changequote.contents.categories) {
+										
+						randomQuoteArray.push(key);
+				}
+				alert(randomQuoteArray);
+				 var newTweet=json_changequote.contents.categories.inspire;
+				 document.getElementById("tester").innerHTML = newTweet;
+				//document.getElementById("tester").innerHTML = "";
+
+	}
+					else{
+						console.log("Status error: " + xhttp_changeQuote.status);
+					}
+				}
+				else{
+					console.log("Ignored readyState: " + xhttp_changeQuote.readyState);
+				}
+	}
+
+	xhttp_changeQuote.open("GET", "http://quotes.rest/qod/categories.json", true);
+	//xhttp_changeQuote.setRequestHeader("method", "getQuote");
+xhttp_changeQuote.send();
+	
+
+} //end changeit function
+    
+  function loadPage(){
+  Velocity(document.getElementById("testvelocity"), { opacity: 0.5 }, { duration: 5000 });
+
+
+  var xhttp = new XMLHttpRequest();
     
     xhttp.onreadystatechange = function()  {
       
@@ -47,17 +90,15 @@ myTweet = "https://twitter.com/intent/tweet?text=" + myTweet;
  xhttp.send();
 
  
-  }
-  function changeit(){
-  Velocity(document.getElementById("testvelocity"), { opacity: 0.5 }, { duration: 5000 });
+ 
 }
  </script>
  
  
 </head>
 
-<body onload="changeit()">
-    <button type="button" onclick="loadDoc()">Request data</button>
+<body onload="loadPage()">
+    <button type="button" onclick="changeit()">Request data</button>
 <h1 id="tester">hallo</h1>
 <h1 id="tester2">hallo</h1>
 <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
