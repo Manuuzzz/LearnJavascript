@@ -9,45 +9,60 @@
 		<script>
 		var xhttp_changeQuote ="";
 		var json_changequote ="";
+		var xhttp_changeQuote2 ="";
+		var json_changequote2 ="";
+		var randomQuoteArray = [];
+		var randomNumber = "";
+		var url = "";
+		var tempRandomNumber = 0;
+
  function changeit(){
 
-	xhttp_changeQuote = new XMLHttpRequest();
+	xhttp_changeQuote2 = new XMLHttpRequest();
 
 
-	xhttp_changeQuote.onreadystatechange = function() {
+xhttp_changeQuote2.onreadystatechange = function() {
 	
-		 if(xhttp_changeQuote.readyState == 4){
-					//the request is completed, now check its status
-					if(xhttp_changeQuote.status == 200){
-       
-				
-				 json_changequote = JSON.parse(xhttp_changeQuote.responseText);
-				 var randomQuoteArray = [];
-				for (var key in json_changequote.contents.categories) {
-										
-						randomQuoteArray.push(key);
-				}
-				alert(randomQuoteArray);
-				 var newTweet=json_changequote.contents.categories.inspire;
-				 document.getElementById("tester").innerHTML = newTweet;
-				//document.getElementById("tester").innerHTML = "";
-
-	}
-					else{
-						console.log("Status error: " + xhttp_changeQuote.status);
-					}
+	 if(xhttp_changeQuote2.readyState == 4){
+				//the request is completed, now check its status
+				if(xhttp_changeQuote2.status == 200){
+   
+			
+			 json_changequote2 = JSON.parse(xhttp_changeQuote2.responseText);
+			//var tweet2 = JSON.stringify(json_changequote2.contents.quotes[0].quote);
+ document.getElementById("tester").innerHTML = json_changequote2.contents.quotes[0].quote;
+			
+		
 				}
 				else{
-					console.log("Ignored readyState: " + xhttp_changeQuote.readyState);
+					console.log("Status error: " + xhttp_changeQuote2.status);
 				}
-	}
+			}
+			else{
+				console.log("Ignored readyState: " + xhttp_changeQuote2.readyState);
+			}
+}
+var randomQuoteArrayLength = randomQuoteArray.length;
+randomNumber = Math.floor((Math.random()*randomQuoteArrayLength)); // no + 1 as it is used in an Array
 
-	xhttp_changeQuote.open("GET", "http://quotes.rest/qod/categories.json", true);
-	//xhttp_changeQuote.setRequestHeader("method", "getQuote");
-xhttp_changeQuote.send();
-	
+ while (randomNumber == tempRandomNumber) {
+	 alert(randomNumber + " + temp: " + tempRandomNumber);
+	randomNumber = Math.floor((Math.random()*randomQuoteArrayLength));
+}
+tempRandomNumber = randomNumber;
+
+
+url = "http://quotes.rest/qod.json?category=" + randomQuoteArray[randomNumber];
+
+xhttp_changeQuote2.open("GET", url, true);
+
+
+xhttp_changeQuote2.send();
 
 } //end changeit function
+
+
+
     
   function loadPage(){
   Velocity(document.getElementById("testvelocity"), { opacity: 0.5 }, { duration: 5000 });
@@ -89,6 +104,41 @@ myTweet = "https://twitter.com/intent/tweet?text=" + myTweet;
  // xhttp.open("GET", "http://quotes.rest/quote/random.json", true); this one is private
  xhttp.send();
 
+
+
+
+xhttp_changeQuote = new XMLHttpRequest();
+
+
+xhttp_changeQuote.onreadystatechange = function() {
+
+	 if(xhttp_changeQuote.readyState == 4){
+				//the request is completed, now check its status
+				if(xhttp_changeQuote.status == 200){
+   
+			
+			 json_changequote = JSON.parse(xhttp_changeQuote.responseText);
+		
+			for (var key in json_changequote.contents.categories) {
+									
+					randomQuoteArray.push(key);
+					
+			}
+			
+			var randomQuoteArrayLength = randomQuoteArray.length;
+				}
+				else{
+					console.log("Status error: " + xhttp_changeQuote.status);
+				}
+			}
+			else{
+				console.log("Ignored readyState: " + xhttp_changeQuote.readyState);
+			}
+}
+
+xhttp_changeQuote.open("GET", "http://quotes.rest/qod/categories.json", true);
+//xhttp_changeQuote.setRequestHeader("method", "getQuote");
+xhttp_changeQuote.send();
  
  
 }
