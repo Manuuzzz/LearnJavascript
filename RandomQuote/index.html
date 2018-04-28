@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>
+       Random Quote Machine
+    </title>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="main.css">
+     
+
+    <script src="../velocity/velocity.min.js"></script>
+    <script src="mainjs.js"></script>
+
+</head>
+
+<body onload="loadQuote()">
+
+   
+            <div class="container-fluid">
+
+                <div class="row">         
+                     
+                    <div class="col-12 text-center text-secondary">
+                   <h1><a class="text-secondary" href="https://www.freecodecamp.org/challenges/build-a-random-quote-machine" target="_blank">Random Quote Machine</a></h1>
+                   <br>
+                   <h2>freeCodeCamp</h2>
+                   
+                    </div>
+                
+                </div>         
+
+
+                <div class="row justify-content-center">
+                        
+                    <div id="colorchange" class="jumbotron">
+                            
+                        <h3 id="Quote" class="display-6">Quote!</h1>
+                        <p  id="Author">Author</p>
+
+                               
+                    </div>
+                </div>   
+                    
+                <div class="row justify-content-center">         
+                              
+                    <a id="tweetit" href="https://twitter.com/intent/tweet" target="_blank"><button class="btn btn-secondary" type="button">Tweet data</button></a>   
+                    &nbsp;<button class="btn btn-secondary" type="button" onclick="changeQuote()">Change Quote</button>  
+                
+                </div>                    
+               
+            </div>  
+
+              
+            
+
+      
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          
+
+    
+<!-- todo: add extra catch error lines for xmlhttprequest
+            add color schemes per quote
+        change tweet button
+        add header with explanation of CORS, API, freecodecamp link
+        add timer instead of button to change quote
+-->
+</body>
+
+</html>
+
