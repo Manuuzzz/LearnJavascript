@@ -21,8 +21,11 @@ var xhttp = new XMLHttpRequest();
                   if(xhttp.status == 200){
                 
                 var jsonObj = JSON.parse(xhttp.responseText);
-                quote = JSON.stringify(jsonObj.contents.quotes[0].quote);
-                author = jsonObj.contents.quotes[0].author;
+				//quote = JSON.stringify(jsonObj.quote);
+				
+				quote = JSON.stringify(jsonObj.contents.quotes[0].quote);
+			   author = jsonObj.contents.quotes[0].author;
+			   //author = jsonObj.author;
                 tweet = "https://twitter.com/intent/tweet?text=" + quote + " Author: " + author;
                 Velocity(document.getElementById("Quote"), { opacity: 0.0 }, { duration: 0 });
                 document.getElementById("Quote").innerHTML = quote;
@@ -45,7 +48,7 @@ var xhttp = new XMLHttpRequest();
           
           
           }
-
+		  //xhttp.open("GET", "https://talaikis.com/api/quotes/random/", true);	  
 xhttp.open("GET", "http://quotes.rest/qod.json?category=sports", true);
 xhttp.send();
 
