@@ -18,7 +18,7 @@ var colorNumber = 0;
  
  tempColorNumber = colorNumber;
  
- var className = "jumbotron " + quoteColor[colorNumber]
+ var className = "jumbotron " + quoteColor[colorNumber];
  
  document.getElementById("colorchange").setAttribute("class",className);
 
