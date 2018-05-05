@@ -19,12 +19,46 @@ display: block;
 
 }
 
+.wrapper {
+
+border: 1px;
+border-style: solid;
+border-width: 1px;
+border-color: grey;
+border-radius: round;
+width: 400px;
+margin: 0 auto;
+background-color: white;
+
+padding: 0;
+}
+
+#location {
+
+/*    text-align: left; */
+margin: 5px;
+font-size: 1.3em;
+color: grey;
+font-weight: bold;
+}
+
 main {
+
 
 
 }
 
+.img-weather {
 
+
+}
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%
+
+}
 
 
 footer {
@@ -37,8 +71,66 @@ footer {
 #weatherBackground {
 
 background-attachment: fixed;
-background-image: url(weatherimg/mediumweather.jpg);
+/*background-image: url(weatherimg/mediumweather.jpg);*/
 background-repeat: no-repeat;
 background-size: cover;
+
+}
+
+
+#showWeather {
+
+
+
+}
+
+.small {
+
+font-size: 0.5em;
+vertical-align: super;
+
+}
+
+#windContainer {
+
+
+    text-align: center;
+    margin: 5px;
+    font-size: 1em;
+    color: grey;
+    background-color: white;
+    font-weight: bold;
+   
+}
+
+
+
+#showTemp {
+
+    
+    margin: 5px;
+    font-size: 2em;
+    color: grey;
+    font-weight: bold;
+
+
+}
+
+.foreCast {
+
+    
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    margin: 0;
+    padding: 0;
+
+}
+
+.weatherToday {
+
+    margin: 0;
+    padding: 0;
+
 
 }
