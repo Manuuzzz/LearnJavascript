@@ -62,16 +62,6 @@ footer {
     font-size: 0.8em;
    }
 
-#weatherBackground {
-
-background-attachment: fixed;
-/*background-image: url(weatherimg/mediumweather.jpg);*/
-background-repeat: no-repeat;
-background-size: cover;
-
-}
-
-
 
 
 .small {
@@ -86,7 +76,7 @@ vertical-align: super;
 
     text-align: center;
     margin: 5px;
-    font-size: 1em;
+    font-size: 0.9em;
     color: grey;
     background-color: white;
     font-weight: bold;
@@ -99,7 +89,7 @@ vertical-align: super;
 
     
     margin: 5px;
-    font-size: 2em;
+    font-size: 1.8em;
     color: grey;
     font-weight: bold;
 
