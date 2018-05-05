@@ -19,8 +19,8 @@ var d = date.getDay();
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-var weatherAPI_Endpoint = "http://api.openweathermap.org/data/2.5/weather?"
-var weatherAPI_Forecast_Endpoint = "http://api.openweathermap.org/data/2.5/forecast?"
+var weatherAPI_Endpoint = "https://api.openweathermap.org/data/2.5/weather?"
+var weatherAPI_Forecast_Endpoint = "https://api.openweathermap.org/data/2.5/forecast?"
 var lat = "";
 var lon = "";
 var API_key = "&APPID=fe8927ebae20aa63891f33970a2edfb1";
@@ -102,7 +102,7 @@ function GetWeather() {
                 var temperature_Kelvin = jsonObj.main.temp;
                 temperature_Celsius = toCelsius(temperature_Kelvin);
                 temperature_Fahrenheit = toFahrenheit(temperature_Kelvin);
-                var img = '<img class="img_weather" width="70" height="70" src="weatherimg/' + iconID+".svg" + '">';
+                var img = '<img class="img_weather" width="70" height="70" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID+".svg" + '">';
                 var name = jsonObj.name;
                 var windSpeed = jsonObj.wind.speed;
                 var windDegrees = jsonObj.wind.deg;
@@ -159,10 +159,10 @@ if (weatherForecast_xhttp.readyState == 4 ) {
           iconID_todayplus3 = jsonObj.list[3].weather[0].icon; 
           iconID_todayplus4 = jsonObj.list[4].weather[0].icon; 
 
-          img_Tomorrow = '<img width="30" height="30" src="weatherimg/' + iconID_Tomorrow+".svg" + '">';
- img_todayplus2 = '<img width="30" height="30" src="weatherimg/' + iconID_todayplus2+".svg" + '">';
-          img_todayplus3 = '<img width="30" height="30" src="weatherimg/' + iconID_todayplus3+".svg" + '">';
-          img_todayplus4 = '<img width="30" height="30" src="weatherimg/' + iconID_todayplus4+".svg" + '">';
+          img_Tomorrow = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_Tomorrow+".svg" + '">';
+ img_todayplus2 = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_todayplus2+".svg" + '">';
+          img_todayplus3 = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_todayplus3+".svg" + '">';
+          img_todayplus4 = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_todayplus4+".svg" + '">';
 
           temperatureKelvin_Tomorrow = jsonObj.list[1].main.temp;
           temperatureKelvin_todayplus2 = jsonObj.list[2].main.temp;
@@ -256,35 +256,35 @@ function checkWindDirection(windDegrees) {
     switch(true) {
        
         case (checkDegrees >= 78.75 && checkDegrees<= 101.25):
-            return '<img src="weatherimg/E.svg" width="20" height="20">';
+            return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/E.svg" width="20" height="20">';
             break;
 
         case (checkDegrees > 101.25 && checkDegrees<= 168.75):
-        return '<img src="weatherimg/SE.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/SE.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 168.75 && checkDegrees<= 191.25):
-        return '<img src="weatherimg/S.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/S.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 191.25 && checkDegrees<= 258.75):
-        return '<img src="weatherimg/SW.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/SW.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 258.75 && checkDegrees<= 281.25):
-        return '<img src="weatherimg/W.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/W.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 281.25 && checkDegrees<= 348.75):
-        return '<img src="weatherimg/NW.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/NW.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 348.75 && checkDegrees<= 11.25):
-        return '<img src="weatherimg/N.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/N.svg" width="20" height="20">';
         break;
 
         case (checkDegrees > 11.25 && checkDegrees<= 78.74):
-        return '<img src="weatherimg/NE.svg" width="20" height="20">';
+        return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/NE.svg" width="20" height="20">';
         break;
 
 
