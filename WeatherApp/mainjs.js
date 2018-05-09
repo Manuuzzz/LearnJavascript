@@ -11,7 +11,10 @@ URL is
 http://openweathermap.org/img/w/10d.png
 
 */
+//New code variables
 
+
+//
 
 var days = [];
 var date = new Date();
@@ -24,13 +27,11 @@ var weatherAPI_Forecast_Endpoint = "https://api.openweathermap.org/data/2.5/fore
 var lat = "";
 var lon = "";
 var API_key = "&APPID=fe8927ebae20aa63891f33970a2edfb1";
+
 var toggleTemp = "Celsius";
 var temperature_Celsius = 0;
 var temperature_Fahrenheit =0;
-var temperatureKelvin_Tomorrow = 0;
-var temperatureKelvin_todayplus2 = 0;
- var temperatureKelvin_todayplus3 = 0;
-var temperatureKelvin_todayplus4 = 0;
+
 var iconID_Tomorrow = "";  
 var iconID_todayplus2 = ""; 
 var iconID_todayplus3 = ""; 
@@ -57,6 +58,8 @@ var windDirection_todayplus3 = "";
 var windDirection_todayplus4 = "";
 
 
+
+
 function getLocation(callback) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -77,14 +80,14 @@ function showPosition(position) {
     weatherAPI_Forecast_Endpoint = weatherAPI_Forecast_Endpoint +"lat=" + lat + "&lon=" + lon + API_key;
     
 
-    GetWeather();
+    GetCurrentWeather();
     GetForecast();
    
 }
 
 
 
-function GetWeather() {
+function GetCurrentWeather() {
    
 
     var weather_xhttp = new XMLHttpRequest();
@@ -106,6 +109,7 @@ function GetWeather() {
                 var name = jsonObj.name;
                 var windSpeed = jsonObj.wind.speed;
                 var windDegrees = jsonObj.wind.deg;
+                
                 var windDirection = checkWindDirection(windDegrees);
            
                 document.getElementById("location").innerHTML = name;
@@ -164,14 +168,7 @@ if (weatherForecast_xhttp.readyState == 4 ) {
           img_todayplus3 = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_todayplus3+".svg" + '">';
           img_todayplus4 = '<img width="30" height="30" src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/' + iconID_todayplus4+".svg" + '">';
 
-          temperatureKelvin_Tomorrow = jsonObj.list[1].main.temp;
-          temperatureKelvin_todayplus2 = jsonObj.list[2].main.temp;
-          temperatureKelvin_todayplus3 = jsonObj.list[3].main.temp;
-          temperatureKelvin_todayplus4 = jsonObj.list[4].main.temp;
-
-
-
-          windSpeed_Tomorrow = jsonObj.list[1].wind.speed;
+              windSpeed_Tomorrow = jsonObj.list[1].wind.speed;
           windDegrees_Tomorrow = jsonObj.list[1].wind.deg;
  windSpeed_todayplus2 = jsonObj.list[2].wind.speed;
           windDegrees_todayplus2 = jsonObj.list[2].wind.deg;
@@ -188,10 +185,10 @@ if (weatherForecast_xhttp.readyState == 4 ) {
 
 
       
-document.getElementById("showForecast1").innerHTML = weekdays[days[1]] + '<br>' + img_Tomorrow + '<br>'+ toCelsius(temperatureKelvin_Tomorrow)+ '<br>'+Math.floor((windSpeed_Tomorrow*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_Tomorrow;
-document.getElementById("showForecast2").innerHTML = weekdays[days[2]]+ '<br>' + img_todayplus2 + '<br>' +  toCelsius(temperatureKelvin_todayplus2)+'<br>'+Math.floor((windSpeed_todayplus2*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus2;
-document.getElementById("showForecast3").innerHTML = weekdays[days[3]]+ '<br>' + img_todayplus3 + '<br>' + toCelsius(temperatureKelvin_todayplus3)+ '<br>'+Math.floor((windSpeed_todayplus3*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus3;
-document.getElementById("showForecast4").innerHTML = weekdays[days[4]]+ '<br>' + img_todayplus4 + '<br>' + toCelsius(temperatureKelvin_todayplus4)+'<br>'+Math.floor((windSpeed_todayplus4*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus4;
+document.getElementById("showForecast1").innerHTML = weekdays[days[1]] + '<br>' + img_Tomorrow + '<br>'+ Math.floor((windSpeed_Tomorrow*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_Tomorrow;
+document.getElementById("showForecast2").innerHTML = weekdays[days[2]]+ '<br>' + img_todayplus2 + '<br>' + Math.floor((windSpeed_todayplus2*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus2;
+document.getElementById("showForecast3").innerHTML = weekdays[days[3]]+ '<br>' + img_todayplus3 + '<br>' + Math.floor((windSpeed_todayplus3*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus3;
+document.getElementById("showForecast4").innerHTML = weekdays[days[4]]+ '<br>' + img_todayplus4 + '<br>' +Math.floor((windSpeed_todayplus4*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus4;
 
     }
     else {
@@ -210,22 +207,7 @@ weatherForecast_xhttp.send();
 
 } // end function GetForecast
 
-function toCelsius(temperature_Kelvin) {
-  
-    // Kelvin to Celsius:  T(K) - 273.15
 
-   var temperature = temperature_Kelvin- 273.15;
-   return Math.round(temperature);
- 
-
-}
-
-function toFahrenheit(temperature_Kelvin) {
-  // Kelvin to Fahrenheit  9/5(K - 273) + 32
-
-  var temperature = ((9/5)* temperature_Kelvin)  +32;
-   return Math.round(temperature);
-}
 
 function getDays(d) {
    
@@ -279,7 +261,7 @@ function checkWindDirection(windDegrees) {
         return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/NW.svg" width="20" height="20">';
         break;
 
-        case (checkDegrees > 348.75 && checkDegrees<= 11.25):
+        case (checkDegrees > 348.75 || checkDegrees<= 11.25):
         return '<img src="http://users.telenet.be/tuxken/WeatherApp/weatherimg/N.svg" width="20" height="20">';
         break;
 
@@ -289,35 +271,51 @@ function checkWindDirection(windDegrees) {
 
 
     }
-//east 78.75 - 101.25
-// south east101.25 168.75
-// s 168.75 - 191.25
-// sw 191.25 258.75
-// w 258.75 - 281.25
-// nw 281.25 - 348.75
-// n 348.75 - 11.25
+
 }
+
+
+// toggleCF is used to toggle the temperature from Celsius to Fahrenheit and back.
+
 
 function toggleCF() {
+    
+    var showTemp = document.getElementById("showTemp");
 
-if ( toggleTemp == "Celsius") {
-    document.getElementById("showTemp").innerHTML = temperature_Fahrenheit + '&#8457';
-    document.getElementById("showForecast1").innerHTML = weekdays[days[1]] + '<br>' + img_Tomorrow + '<br>'+ toFahrenheit(temperatureKelvin_Tomorrow)+ '<br>'+Math.floor((windSpeed_Tomorrow*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_Tomorrow;
-    document.getElementById("showForecast2").innerHTML = weekdays[days[2]]+ '<br>' + img_todayplus2 + '<br>' +  toFahrenheit(temperatureKelvin_todayplus2)+'<br>'+Math.floor((windSpeed_todayplus2*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus2;
-    document.getElementById("showForecast3").innerHTML = weekdays[days[3]]+ '<br>' + img_todayplus3 + '<br>' + toFahrenheit(temperatureKelvin_todayplus3)+ '<br>'+Math.floor((windSpeed_todayplus3*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus3;
-    document.getElementById("showForecast4").innerHTML = weekdays[days[4]]+ '<br>' + img_todayplus4 + '<br>' + toFahrenheit(temperatureKelvin_todayplus4)+'<br>'+Math.floor((windSpeed_todayplus4*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus4;
-    toggleTemp = "Fahrenheit";
+    if ( toggleTemp == "Celsius") {
+   
+        showTemp.innerHTML = temperature_Fahrenheit + '&#8457';
+        toggleTemp = "Fahrenheit";
 
-}
+    }
 
-else {
-    document.getElementById("showTemp").innerHTML = temperature_Celsius + '&#8451';
-    document.getElementById("showForecast1").innerHTML = weekdays[days[1]] + '<br>' + img_Tomorrow + '<br>'+ toCelsius(temperatureKelvin_Tomorrow)+ '<br>'+Math.floor((windSpeed_Tomorrow*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_Tomorrow;
-document.getElementById("showForecast2").innerHTML = weekdays[days[2]]+ '<br>' + img_todayplus2 + '<br>' +  toCelsius(temperatureKelvin_todayplus2)+'<br>'+Math.floor((windSpeed_todayplus2*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus2;
-document.getElementById("showForecast3").innerHTML = weekdays[days[3]]+ '<br>' + img_todayplus3 + '<br>' + toCelsius(temperatureKelvin_todayplus3)+ '<br>'+Math.floor((windSpeed_todayplus3*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus3;
-document.getElementById("showForecast4").innerHTML = weekdays[days[4]]+ '<br>' + img_todayplus4 + '<br>' + toCelsius(temperatureKelvin_todayplus4)+'<br>'+Math.floor((windSpeed_todayplus4*3600)/1000) + '&nbspKm/h' + '<br>' + windDirection_todayplus4;
- toggleTemp = "Celsius";
+    else {
+    
+        showTemp.innerHTML = temperature_Celsius + '&#8451';
+        toggleTemp = "Celsius";
+
+    }
 
 }
+
+
+// function toCelsius is used to convert to temperature from Kelvin to Celsius.
+// Kelvin to Celsius:  T(K) - 273.15
+
+function toCelsius(temperature_Kelvin) {
+  
+    var temperature = temperature_Kelvin- 273.15;
+    return Math.round(temperature);
+ 
+}
+
+
+// function toCelsius is used to convert to temperature from Kelvin to Celsius.
+  // Kelvin to Fahrenheit  9/5(K) - 459.67
+
+function toFahrenheit(temperature_Kelvin) {
+
+    var temperature = ((9/5)* temperature_Kelvin) - 459.67;
+    return Math.round(temperature);
 
 }
