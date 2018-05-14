@@ -1,14 +1,15 @@
 /*
+Explanation:
+Search results:
+https://www.mediawiki.org/wiki/API:Page_info_in_search_results
 
-https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=random&rnlimit=1
+Extracts:
+https://www.mediawiki.org/wiki/Extension:TextExtracts#API
 
-https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=search&utf8=1&srsearch=Albert%20Einstein
-
-
-add &origin=* for CORS issues or set requestheader
+add &origin=* for CORS issues
 
 todo:
-
+use this: https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=10&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=einstein
 add display function
 fill in randomentry function
 change width of items
