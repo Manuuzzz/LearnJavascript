@@ -6,6 +6,13 @@ https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=s
 
 
 add &origin=* for CORS issues or set requestheader
+
+todo:
+
+add display function
+fill in randomentry function
+change width of items
+check colors
 */
 
 const URL = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&list=search&utf8=1&srsearch=";
