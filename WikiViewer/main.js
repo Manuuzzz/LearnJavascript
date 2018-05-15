@@ -9,18 +9,16 @@ https://www.mediawiki.org/wiki/Extension:TextExtracts#API
 add &origin=* for CORS issues
 
 todo:
-use this: https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrlimit=10&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=einstein
 add display function
-fill in randomentry function
 change width of items
 check colors
 */
 
-const URL = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&list=search&utf8=1&srsearch=";
-const randomURL = "https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1"
+const URL = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&formatversion=2&generator=search&gsrlimit=10&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=";
+const randomURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&generator=random&formatversion=2&exsentences=10&exlimit=1&exintro=1&explaintext=1&grnnamespace=0&grnlimit=1"
 const resultBaseURL = "http://en.wikipedia.org/?curid=";
 var searchResult = document.getElementById("searchResult");
-var insertPosition = document.getElementById("searchResult").parentNode;
+
 
 function init() {
 
@@ -46,26 +44,9 @@ function wikiSearch() {
 
     httpRequest(modifiedURL,function(response) {
   
-          //clear results
-          searchResult.innerHTML = "";
-
-        for(var i = 0; i <9; i++) {
-        var jsonObj = JSON.parse(response);
-        var snippet = jsonObj.query.search[i].snippet;
-        var title = jsonObj.query.search[i].title;
-        var pageId = jsonObj.query.search[i].pageid;
-        resultURL = resultBaseURL + pageId;
-
-      
-
-        //add searchresults as li under UL
-
-        var Li = document.createElement("li");
-        Li.setAttribute("class","list-group-item");
-        Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"text-success\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
-        searchResult.insertBefore(Li,searchResult.childNodes[0]);
-        }
-
+       
+        displayResult(response);   
+         
 
   });
  
@@ -78,10 +59,26 @@ function wikiRandom() {
 
 httpRequest(randomURL,function(response) {
 
-    document.getElementById("showtest").innerHTML = response;
+  //clear results
+ searchResult.innerHTML = "";
+
+ 
+
+ var jsonObj = JSON.parse(response);
+ var snippet = jsonObj.query.pages[0].extract;
+ var title = jsonObj.query.pages[0].title;
+ var pageId = jsonObj.query.pages[0].pageid;
+ resultURL = resultBaseURL + pageId;
+
+ //add searchresults as li under UL
+
+ var Li = document.createElement("li");
+ Li.setAttribute("class","list-group-item");
+ Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"text-success\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+ searchResult.insertBefore(Li,searchResult.childNodes[0]);
+ 
+ 
 });
-
-
 
 }
 
@@ -111,8 +108,29 @@ function httpRequest(url,callback) {
   request.open("GET", url,true);
   request.send();
 
+}
 
 
+function displayResult(response) {
+
+ //clear results
+ searchResult.innerHTML = "";
+
+ for(var i = 0; i <8; i++) {
+
+ var jsonObj = JSON.parse(response);
+ var snippet = jsonObj.query.pages[i].extract;
+ var title = jsonObj.query.pages[i].title;
+ var pageId = jsonObj.query.pages[i].pageid;
+ resultURL = resultBaseURL + pageId;
+
+ //add searchresults as li under UL
+
+ var Li = document.createElement("li");
+ Li.setAttribute("class","list-group-item");
+ Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"text-success\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+ searchResult.insertBefore(Li,searchResult.childNodes[i]);
+ }
 
 
 }
