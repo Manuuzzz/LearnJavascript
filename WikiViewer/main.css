@@ -54,7 +54,7 @@ color: #3F5E5A;
    #searchButtonXS {
 
     display: inline;
-    width: 100%;
+  
     text-align: center;
 
     }
@@ -67,6 +67,7 @@ color: #3F5E5A;
     #search {
 
     width: 100%;
+    border-radius: 0;
 
     }
 
