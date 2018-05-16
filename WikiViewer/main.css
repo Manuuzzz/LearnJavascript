@@ -14,15 +14,14 @@ footer {
     font-size: 0.8em;
    }
 
-   a, a:hover {
+   a,a:hover {
 
 text-decoration: none;
 color: #3F5E5A;
 
    }
 
-
-
+ 
 
  #searchString {
     border-radius: 0;
@@ -54,8 +53,9 @@ color: #3F5E5A;
 
    #searchButtonXS {
 
-    display: block;
-    width: auto;
+    display: inline;
+    width: 100%;
+    text-align: center;
 
     }
 
@@ -64,4 +64,10 @@ color: #3F5E5A;
         display: none;
    }
 
-}
+    #search {
+
+    width: 100%;
+
+    }
+
+    }
