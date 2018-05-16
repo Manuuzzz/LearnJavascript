@@ -17,5 +17,51 @@ footer {
    a, a:hover {
 
 text-decoration: none;
+color: #3F5E5A;
 
    }
+
+
+
+
+ #searchString {
+    border-radius: 0;
+    display: inline;
+
+ }
+
+  .form-control,.form-control:focus{
+
+    
+    background-color: white;
+    outline: 0;
+    box-shadow: 0 0 0 0 #28a745;
+    border-color: #28a745;
+    
+
+   
+   }
+
+   #searchButtonXS {
+
+   display: none;
+
+    }
+
+   
+
+   @media (max-width: 575px) {
+
+   #searchButtonXS {
+
+    display: block;
+    width: auto;
+
+    }
+
+    #searchButton {
+
+        display: none;
+   }
+
+}

@@ -10,8 +10,8 @@ add &origin=* for CORS issues
 
 todo:
 add display function
-change width of items
-check colors
+check colors 
+add starting effect?
 */
 
 const URL = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&formatversion=2&generator=search&gsrlimit=10&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=";
@@ -74,7 +74,7 @@ httpRequest(randomURL,function(response) {
 
  var Li = document.createElement("li");
  Li.setAttribute("class","list-group-item");
- Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"text-success\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+ Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
  searchResult.insertBefore(Li,searchResult.childNodes[0]);
  
  
@@ -128,7 +128,7 @@ function displayResult(response) {
 
  var Li = document.createElement("li");
  Li.setAttribute("class","list-group-item");
- Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"text-success\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+ Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
  searchResult.insertBefore(Li,searchResult.childNodes[i]);
  }
 

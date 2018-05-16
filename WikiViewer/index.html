@@ -14,6 +14,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
      
 
@@ -34,30 +35,61 @@
                         <h2>Wikipedia Viewer</h2>
 
                     </header>
-                  
-                    <main>
-               
-                 
-                       
-                            <input id="searchString" class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <br>
-                            <button id="search" class="btn btn-outline-success" type="button" onclick="wikiSearch()">Search</button>
-                            <button id="Random Wiki Entry" class="btn btn-outline-success" type="button" onclick="wikiRandom()">Random Wiki Entry</button>
-                            <br><br>
-                  <ul id="searchResult" class="list-group list-group-flush">
-                  </ul> 
-                    </main>
 
-<br><br>
+                </div>
+
+            </div>
+
+            <div class="row  justify-content-center">
+
+                  <div class="col-xs-12">
+                    <main>
+                           
+                            <div class="input-group input-group-lg form-group form-inline">
+                                
+                                <div class="input-group">
+                                <input id="searchString" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                </div>
+                                
+                                <div id="searchButtonXS" class="input-group">
+                                <button id="search" class="btn btn-lg btn-outline-success" type="button" onclick="wikiSearch()">Search</button>
+                                </div>
+
+                                <div id="searchButton" class="input-group-append">
+                                    <button id="search" class="btn btn-lg btn-outline-success fa fa-search" type="button" onclick="wikiSearch()"></button>
+                                </div>
+
+                            </div>
+                        
+                                <div class="row justify-content-center form-group form-inline ">
+                                 <button id="Random Wiki Entry" class="btn btn-lg btn-outline-success" type="button" onclick="wikiRandom()">Random Wiki Entry</button>
+                                </div>
+                        
+                            <br>
+
+                    </div>
+
+                </div>      
+                
+                
+                <div class="row  justify-content-center">
+
+                    <div class="col-xs-12 text-center">
+                
+                        <ul id="searchResult" class="list-group list-group-flush">
+                         </ul> 
+                    
+                        </main>
+                    </div>
+                </div>
+            
 
                     <footer class="text-secondary bg-light text-center">
            test
                         </footer>
 
    
-          </div>
-  </div>
-                <!--   main.js bottom page so we don't have to wait for the DOM  -->
+       <!--   main.js bottom page so we don't have to wait for the DOM  -->
                 <script src="main.js"></script>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
