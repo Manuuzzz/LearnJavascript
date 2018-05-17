@@ -55,7 +55,13 @@ color: #3F5E5A;
 
     }
 
-
+    #search {
+  
+        outline: 0;
+         box-shadow: 0 0 0 0 #28a745;
+         border-color: #28a745;
+       
+     }
    
 
    @media (max-width: 575px) {
