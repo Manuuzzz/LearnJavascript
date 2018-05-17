@@ -22,9 +22,9 @@ var searchResult = document.getElementById("searchResult");
 
 function init() {
 
-  
- var input = document.getElementById("searchString");
-input.addEventListener("keyup", function(event) {
+ 
+    var input = document.getElementById("searchString");
+    input.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
         document.getElementById("search").click();
@@ -38,47 +38,39 @@ function wikiSearch() {
  
 
     var searchString = document.getElementById("searchString").value;
+    
     if(searchString == ""){
-    return; } else {
-    var modifiedURL = URL + searchString.replace(/\s/gi,"%20");
+    
+    return; 
+    
+    } else {
+    
+        var modifiedURL = URL + searchString.replace(/\s/gi,"%20");
+        
 
-    httpRequest(modifiedURL,function(response) {
-  
-       
-        displayResult(response);   
+        httpRequest(modifiedURL,function(response) {
+
+        var isRandom = "no";
+        displayResult(response,isRandom);   
          
-
-  });
+        });
  
+    }
 }
-}
+
 
 
 function wikiRandom() {
 
+    httpRequest(randomURL,function(response) {
 
-httpRequest(randomURL,function(response) {
+     //clear results
+   // searchResult.innerHTML = "";
+    var isRandom = "yes";
 
-  //clear results
- searchResult.innerHTML = "";
-
+    displayResult(response,isRandom);
  
-
- var jsonObj = JSON.parse(response);
- var snippet = jsonObj.query.pages[0].extract;
- var title = jsonObj.query.pages[0].title;
- var pageId = jsonObj.query.pages[0].pageid;
- resultURL = resultBaseURL + pageId;
-
- //add searchresults as li under UL
-
- var Li = document.createElement("li");
- Li.setAttribute("class","list-group-item");
- Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
- searchResult.insertBefore(Li,searchResult.childNodes[0]);
- 
- 
-});
+     });
 
 }
 
@@ -97,7 +89,7 @@ function httpRequest(url,callback) {
                 
                             
                 return callback(request.responseText);
-              //  return callback(request.responseText);
+           
         
         } else {  }
 
@@ -111,26 +103,45 @@ function httpRequest(url,callback) {
 }
 
 
-function displayResult(response) {
+function displayResult(response,isRandom) {
 
  //clear results
  searchResult.innerHTML = "";
 
- for(var i = 0; i <8; i++) {
+ if(isRandom == "no") {
 
- var jsonObj = JSON.parse(response);
- var snippet = jsonObj.query.pages[i].extract;
- var title = jsonObj.query.pages[i].title;
- var pageId = jsonObj.query.pages[i].pageid;
- resultURL = resultBaseURL + pageId;
+    for(var i = 0; i <8; i++) {
 
- //add searchresults as li under UL
+    var jsonObj = JSON.parse(response);
+    var snippet = jsonObj.query.pages[i].extract;
+    var title = jsonObj.query.pages[i].title;
+    var pageId = jsonObj.query.pages[i].pageid;
+    resultURL = resultBaseURL + pageId;
 
- var Li = document.createElement("li");
- Li.setAttribute("class","list-group-item");
- Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
- searchResult.insertBefore(Li,searchResult.childNodes[i]);
+    //add searchresults as li under UL
+
+     var Li = document.createElement("li");
+    Li.setAttribute("class","list-group-item");
+    Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+    searchResult.insertBefore(Li,searchResult.childNodes[i]);
+    }
+
+ } else {
+
+    var jsonObj = JSON.parse(response);
+    var snippet = jsonObj.query.pages[0].extract;
+    var title = jsonObj.query.pages[0].title;
+    var pageId = jsonObj.query.pages[0].pageid;
+    resultURL = resultBaseURL + pageId;
+   
+    //add searchresults as li under UL
+   
+    var Li = document.createElement("li");
+    Li.setAttribute("class","list-group-item");
+    Li.innerHTML = "<a href=\"" + resultURL + "\"target=\"_blank\" class=\"results\">" + "<h4>" + title + "</h4>" + snippet + "</a>";
+    searchResult.insertBefore(Li,searchResult.childNodes[0]);
+
  }
 
-
 }
+
