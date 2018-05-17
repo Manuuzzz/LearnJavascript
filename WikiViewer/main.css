@@ -29,15 +29,6 @@ color: #3F5E5A;
 
  }
 
- #Random_Wiki_Entry {
-  
-    background-color: white;
-      outline: 0;
-      box-shadow: 0 0 0 0 #28a745;
-      border-color: #28a745;
-    
-  }
-
   .form-control,.form-control:focus{
 
     
@@ -49,12 +40,21 @@ color: #3F5E5A;
 
    
    }
+#Random_Wiki_Entry {
+  
 
+    outline: 0;
+    box-shadow: 0 0 0 0 #28a745;
+    border-color: #28a745;
+
+  
+}
    #searchButtonXS {
 
    display: none;
 
     }
+
 
    
 
