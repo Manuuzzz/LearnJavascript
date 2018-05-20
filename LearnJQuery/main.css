@@ -1,0 +1,89 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%
+
+}
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.8em;
+   }
+
+   a,a:hover {
+
+text-decoration: none;
+color: #3F5E5A;
+
+   }
+
+ 
+
+ #searchString {
+    border-radius: 0;
+    display: inline;
+
+ }
+
+  .form-control,.form-control:focus{
+
+    
+    background-color: white;
+    outline: 0;
+    box-shadow: 0 0 0 0 #28a745;
+    border-color: #28a745;
+    
+
+   
+   }
+#Random_Wiki_Entry {
+  
+
+    outline: 0;
+    box-shadow: 0 0 0 0 #28a745;
+    border-color: #28a745;
+
+  
+}
+   #searchButtonXS {
+
+   display: none;
+
+    }
+
+    #search {
+  
+        outline: 0;
+         box-shadow: 0 0 0 0 #28a745;
+         border-color: #28a745;
+       
+     }
+   
+
+   @media (max-width: 575px) {
+
+   #searchButtonXS {
+
+    display: inline;
+  
+    text-align: center;
+
+    }
+
+    #searchButton {
+
+        display: none;
+   }
+
+    #search {
+
+    width: 100%;
+    border-radius: 0;
+
+    }
+
+    }
