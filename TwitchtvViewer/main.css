@@ -6,25 +6,49 @@ body {
 }
 
 
+
+
+
+a,a:hover {
+
+text-decoration: none;
+color: #3F5E5A;
+
+}
+
+ 
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     font-size: 0.8em;
-   }
+}
 
-   a,a:hover {
+i.online {
 
-text-decoration: none;
-color: #3F5E5A;
+color: red;
 
-   }
+}
 
- 
+#container {
 
-   @media (max-width: 575px) {
+width: 300px;
+background: grey;
+
+}
+#toggle_esl_sc2 {
+   
+    
+    
+    
+    
+  }
+
+
+
+@media (max-width: 575px) {
 
    
 
-    }
+}
