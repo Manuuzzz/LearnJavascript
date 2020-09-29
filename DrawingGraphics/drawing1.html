@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+       
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 
+    
+    Note: You should generally set the size of the image using HTML attributes or DOM properties, as explained above. 
+    You could use CSS, but the trouble then is that the sizing is done after the canvas has rendered, 
+    and just like any other image (the rendered canvas is just an image), the image could become pixellated/distorted.
+  
+  -->
+
+ <style>
+
+    body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  </style>
+ 
+</head>
+
+
+<body>
+
+<header>
+
+
+
+</header>
+
+<main>
+
+<canvas class="myCanvas">
+  <p>Add suitable fallback here.</p>
+</canvas>
+
+<script>
+
+var canvas = document.querySelector('.myCanvas');
+var width = canvas.width = window.innerWidth;
+var height = canvas.height = window.innerHeight;
+
+var ctx = canvas.getContext('2d');
+
+ctx.fillStyle = 'rgb(255, 0, 0)';
+ctx.fillRect(50, 50, 100, 150);  // the first two parameters are the coordinates of the rectangle's top left hand corner
+
+ctx.fillStyle = 'rgb(0, 255, 0)';
+ctx.fillRect(75, 75, 100, 100);
+
+ctx.fillStyle = 'rgba(255, 0, 255, 0.75)';
+ctx.fillRect(25, 100, 175, 50);
+
+ctx.strokeStyle = 'rgb(0, 255, 255)';
+ctx.strokeRect(25, 25, 175, 200);
+ctx.lineWidth = 5;
+
+  </script>
+</main>
+
+
+
+</body>
+
+</html>
